@@ -26,9 +26,9 @@ const HeadingLevelButton: FC = () => {
 
   const getCurrentHeading = () => {
     for (let level = 1; level <= headings.length; level++) {
-      if (editor?.isActive("heading", { level })) return `Heading ${level}`
+      if (editor?.isActive("heading", { level })) return `Heading ${level}`;
     }
-    return headings[0].label
+    return headings[0].label;
   }
 
   return (
