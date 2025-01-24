@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import { Editor } from "./components/editor";
+import { Toolbar } from "./components/toolbar";
 
 interface DocumentsIdPageProps {
   params: Promise<{ id: string }>
@@ -12,6 +13,7 @@ const DocumentsIdPage: NextPage<DocumentsIdPageProps> = async (props) => {
     <div
       className="min-h-screen bg-[#FAFBFD]"
     >
+      <Toolbar />
       <Editor />
     </div>
   )
