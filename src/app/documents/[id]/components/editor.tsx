@@ -10,17 +10,51 @@ import TableRow from '@tiptap/extension-table-row'
 import TableCell from '@tiptap/extension-table-cell'
 import TaskList from "@tiptap/extension-task-list";
 import TaskItem from "@tiptap/extension-task-item";
+import FontFamily from '@tiptap/extension-font-family'
+import Underline from "@tiptap/extension-underline";
+import TextStyle from '@tiptap/extension-text-style'
+import { useEditorStore } from "@/store/use-editor-store";
 
 const Editor: FC = () => {
+  const { setEditor } = useEditorStore();
+
   const editor = useEditor({
+    immediatelyRender: false,
+    onCreate({ editor }) {
+      setEditor(editor)
+    },
+    onDestroy() {
+      setEditor(null)
+    },
+    onUpdate({ editor }) {
+      setEditor(editor)
+    },
+    onSelectionUpdate({ editor }) {
+      setEditor(editor)
+    },
+    onTransaction({ editor }) {
+      setEditor(editor)
+    },
+    onFocus({ editor }) {
+      setEditor(editor)
+    },
+    onBlur({ editor }) {
+      setEditor(editor)
+    },
+    onContentError({ editor }) {
+      setEditor(editor)
+    },
     editorProps: {
       attributes: {
         style: "padding-left: 56px; padding-right: 56px",
         class: "focus:outline-none print:border-0 bg-white border border-[#C7C7C7] flex flex-col min-h-[1054px] w-[816px] pt-10 pr-14 pb-[10px] cursor-text"
-      }
+      },
     },
     extensions: [
       Image,
+      Underline,
+      FontFamily,
+      TextStyle,
       StarterKit,
       Table.configure({
         resizable: true,
@@ -51,6 +85,8 @@ const Editor: FC = () => {
         </table>
       `,
   })
+
+  if (!editor) return null;
 
   return (
     <div
