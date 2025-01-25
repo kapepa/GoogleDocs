@@ -12,7 +12,9 @@ import TaskList from "@tiptap/extension-task-list";
 import TaskItem from "@tiptap/extension-task-item";
 import FontFamily from '@tiptap/extension-font-family'
 import Underline from "@tiptap/extension-underline";
-import TextStyle from '@tiptap/extension-text-style'
+import TextStyle from '@tiptap/extension-text-style';
+import Highlight from '@tiptap/extension-highlight';
+import { Color } from '@tiptap/extension-color';
 import { useEditorStore } from "@/store/use-editor-store";
 
 const Editor: FC = () => {
@@ -51,11 +53,15 @@ const Editor: FC = () => {
       },
     },
     extensions: [
+      Color,
       Image,
       Underline,
       FontFamily,
       TextStyle,
       StarterKit,
+      Highlight.configure(
+        { multicolor: true }
+      ),
       Table.configure({
         resizable: true,
       }),
