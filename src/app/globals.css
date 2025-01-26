@@ -78,6 +78,15 @@ body {
     margin-top: 0;
   }
 
+  a {
+    @apply text-blue-600;
+    cursor: pointer;
+
+    &:hover {
+      @apply underline
+    }
+  }
+
   h1,
   h2,
   h3,
