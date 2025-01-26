@@ -9,6 +9,8 @@ import { FontFamilyButton } from "./font-family-button";
 import { HeadingLevelButton } from "./heading-level-button";
 import { TextColorButton } from "./text-color-button";
 import { HighlightColorButton } from "./highlight-color-button";
+import { LinkButton } from "./link-button";
+import { ImageButton } from "./image-button";
 
 interface SectionsVal {
   icon: LucideIcon,
@@ -135,6 +137,8 @@ const Toolbar: FC = () => {
         orientation="vertical"
         className="h-6 bg-neutral-300"
       />
+      <LinkButton />
+      <ImageButton />
       {
         sections[2].map((item) => (
           <ToolbarButton
