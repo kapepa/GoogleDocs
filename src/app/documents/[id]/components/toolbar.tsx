@@ -11,6 +11,8 @@ import { TextColorButton } from "./text-color-button";
 import { HighlightColorButton } from "./highlight-color-button";
 import { LinkButton } from "./link-button";
 import { ImageButton } from "./image-button";
+import { AlignButton } from "./align-button";
+import { ListButton } from "./list-button";
 
 interface SectionsVal {
   icon: LucideIcon,
@@ -139,6 +141,8 @@ const Toolbar: FC = () => {
       />
       <LinkButton />
       <ImageButton />
+      <AlignButton />
+      <ListButton />
       {
         sections[2].map((item) => (
           <ToolbarButton
