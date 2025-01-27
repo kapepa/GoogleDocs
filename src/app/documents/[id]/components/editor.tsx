@@ -14,9 +14,14 @@ import FontFamily from '@tiptap/extension-font-family'
 import Underline from "@tiptap/extension-underline";
 import TextStyle from '@tiptap/extension-text-style';
 import Highlight from '@tiptap/extension-highlight';
+import Text from '@tiptap/extension-text';
+import Paragraph from '@tiptap/extension-paragraph';
+import Document from '@tiptap/extension-document';
 import { Color } from '@tiptap/extension-color';
+import TextAlign from '@tiptap/extension-text-align';
 import Link from '@tiptap/extension-link'
 import { useEditorStore } from "@/store/use-editor-store";
+import { FontSizeExtension } from "@/extensions/font-size";
 
 const Editor: FC = () => {
   const { setEditor } = useEditorStore();
@@ -54,6 +59,9 @@ const Editor: FC = () => {
       },
     },
     extensions: [
+      Document,
+      Paragraph,
+      Text,
       Color,
       Image,
       Underline,
@@ -73,6 +81,11 @@ const Editor: FC = () => {
         nested: true,
       }),
       TaskList,
+      TextAlign.configure({
+        types: ['heading', 'paragraph'],
+        // alignments: ['left', 'right', 'center', 'justify'],
+      }),
+      FontSizeExtension,
       Link.configure({
         openOnClick: false,
         autolink: true,
@@ -134,22 +147,7 @@ const Editor: FC = () => {
 
       }),
     ],
-    content: `
-        <table>
-          <tbody>
-            <tr>
-              <th>Name</th>
-              <th colspan="3">Description</th>
-            </tr>
-            <tr>
-              <td>Cyndi Lauper</td>
-              <td>Singer</td>
-              <td>Songwriter</td>
-              <td>Actress</td>
-            </tr>
-          </tbody>
-        </table>
-      `,
+    content: ``,
   })
 
   if (!editor) return null;
