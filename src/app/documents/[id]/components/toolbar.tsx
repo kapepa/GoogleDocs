@@ -13,6 +13,7 @@ import { LinkButton } from "./link-button";
 import { ImageButton } from "./image-button";
 import { AlignButton } from "./align-button";
 import { ListButton } from "./list-button";
+import { LineHeightButton } from "./line-height-button";
 
 interface SectionsVal {
   icon: LucideIcon,
@@ -143,6 +144,7 @@ const Toolbar: FC = () => {
       <ImageButton />
       <AlignButton />
       <ListButton />
+      {/* <LineHeightButton/> */}
       {
         sections[2].map((item) => (
           <ToolbarButton
