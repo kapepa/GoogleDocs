@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
 import { SearchInput } from "./search-input";
+import { UserButton } from '@clerk/clerk-react'
 
 const Navbar: FC = () => {
 
@@ -30,7 +31,7 @@ const Navbar: FC = () => {
         </h3>
       </div>
       <SearchInput />
-      <div />
+      <UserButton />
     </nav>
   )
 }
