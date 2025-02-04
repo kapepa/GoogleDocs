@@ -2,8 +2,9 @@ import { FC } from "react";
 import { Doc } from "../../../../convex/_generated/dataModel";
 import { PaginationStatus } from "convex/react";
 import { LoaderIcon } from "lucide-react";
-import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
+import { Table, TableBody, TableCell, TableHeader, TableHead, TableRow } from "@/components/ui/table";
 import { DocumentsRow } from "./documents-row";
+import { Button } from "@/components/ui/button";
 
 interface DocumentsTableProps {
   documents: Doc<"documents">[],
@@ -35,22 +36,22 @@ const DocumentsTable: FC<DocumentsTableProps> = (props) => {
                 <TableRow
                   className="hover:bg-transparent border-none"
                 >
-                  <TableHeader>
+                  <TableHead>
                     Hame
-                  </TableHeader>
-                  <TableHeader>
+                  </TableHead>
+                  <TableHead>
                     &nbsp;
-                  </TableHeader>
-                  <TableHeader
+                  </TableHead>
+                  <TableHead
                     className="hidden md:table-cell"
                   >
                     Shared
-                  </TableHeader>
-                  <TableHeader
+                  </TableHead>
+                  <TableHead
                     className="hidden md:table-cell"
                   >
                     Create at
-                  </TableHeader>
+                  </TableHead>
                 </TableRow>
               </TableHeader>
               {
@@ -85,6 +86,20 @@ const DocumentsTable: FC<DocumentsTableProps> = (props) => {
             </Table>
           )
       }
+      <div
+        className="flex items-center justify-center"
+      >
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => loadMore(5)}
+          disabled={status !== "CanLoadMore"}
+        >
+          {
+            status === "CanLoadMore" ? "Load more" : "End of results"
+          }
+        </Button>
+      </div>
     </div>
   )
 }

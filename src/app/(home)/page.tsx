@@ -1,6 +1,6 @@
 "use client"
 
-import { useQuery } from "convex/react";
+// import { useQuery } from "convex/react";
 import { Navbar } from "./components/navbar";
 import { TemplatesGallery } from "./components/templates-gallery";
 import { api } from "../../../convex/_generated/api";
