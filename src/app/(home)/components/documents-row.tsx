@@ -5,16 +5,31 @@ import { SiGoogledocs } from "react-icons/si"
 import { Building2Icon, CircleUserIcon, Ghost, MoreVertical } from "lucide-react";
 import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
+import { DocumentMenu } from "./document-menu";
+import { Rounters } from "@/enums/routers";
+import { useRouter } from "next/navigation";
+
+type DocumentType = Doc<"documents">
 
 interface DocumentsRowProps {
-  document: Doc<"documents">
+  document: DocumentType
 }
 
 const DocumentsRow: FC<DocumentsRowProps> = (props) => {
   const { document } = props;
+  const router = useRouter();
+
+  const onNewTabClick = (id: DocumentType["_id"]) => {
+    window.open(`${Rounters.Documents}/${id}`, "_blank");
+  }
+
+  const onRowClick = (id: DocumentType["_id"]) => {
+    router.push(`${Rounters.Documents}/${id}`);
+  }
 
   return (
     <TableRow
+      onClick={onRowClick.bind(null, document._id)}
       className="cursor-pointer"
     >
       <TableCell
@@ -53,15 +68,11 @@ const DocumentsRow: FC<DocumentsRowProps> = (props) => {
       <TableCell
         className="flex ml-auto rounded-full"
       >
-        <Button
-          variant={"ghost"}
-          size={"icon"}
-          className="rounded-full"
-        >
-          <MoreVertical
-            className="size-4"
-          />
-        </Button>
+        <DocumentMenu
+          documentId={document._id}
+          title={document.title}
+          onNewTabClick={onNewTabClick}
+        />
       </TableCell>
     </TableRow>
   )
