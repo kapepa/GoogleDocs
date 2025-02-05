@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
 import { SearchInput } from "./search-input";
-import { UserButton } from '@clerk/clerk-react'
+import { UserButton, OrganizationSwitcher } from '@clerk/clerk-react'
 
 const Navbar: FC = () => {
 
@@ -31,7 +31,17 @@ const Navbar: FC = () => {
         </h3>
       </div>
       <SearchInput />
-      <UserButton />
+      <div
+        className="flex gap-3 items-center pl-6"
+      >
+        <OrganizationSwitcher
+          afterCreateOrganizationUrl={Rounters.Home}
+          afterLeaveOrganizationUrl={Rounters.Home}
+          afterSelectOrganizationUrl={Rounters.Home}
+          afterSelectPersonalUrl={Rounters.Home}
+        />
+        <UserButton />
+      </div>
     </nav>
   )
 }
