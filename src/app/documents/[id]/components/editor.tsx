@@ -23,10 +23,13 @@ import Link from '@tiptap/extension-link'
 import { useEditorStore } from "@/store/use-editor-store";
 // import { FontSizeExtension } from "@/extensions/font-size";
 import { LineHeightExtention } from "@/extensions/line-height";
+import { useLiveblocksExtension, FloatingToolbar } from "@liveblocks/react-tiptap";
 import { Ruler } from "./ruler";
+import { Threads } from "./threads";
 
 const Editor: FC = () => {
   const { setEditor } = useEditorStore();
+  const liveblocks = useLiveblocksExtension();
 
   const editor = useEditor({
     immediatelyRender: false,
@@ -66,6 +69,7 @@ const Editor: FC = () => {
         types: ['heading', 'paragraph'],
         default: "normal"
       }),
+      liveblocks,
       Document,
       Paragraph,
       Text,
@@ -167,6 +171,9 @@ const Editor: FC = () => {
         className="min-w-max flex justify-center w-[816px] py-4 print:py-0 mx-auto print:w-full print:min-w-0"
       >
         <EditorContent
+          editor={editor}
+        />
+        <Threads
           editor={editor}
         />
       </div>

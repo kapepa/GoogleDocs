@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import { Editor } from "./components/editor";
 import { Toolbar } from "./components/toolbar";
 import { Navbar } from "./components/navbar";
+import { Room } from "./components/room";
 
 interface DocumentsIdPageProps {
   params: Promise<{ id: string }>
@@ -23,7 +24,9 @@ const DocumentsIdPage: NextPage<DocumentsIdPageProps> = async (props) => {
       <div
         className="pt-[114px] print:pt-0"
       >
-        <Editor />
+        <Room>
+          <Editor />
+        </Room>
       </div>
     </div>
   )

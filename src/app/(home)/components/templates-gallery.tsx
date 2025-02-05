@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation"
 import { FC, useState } from "react"
 import { api } from "../../../../convex/_generated/api"
 import { Rounters } from "@/enums/routers"
+import { toast } from "sonner"
 
 const TemplatesGallery: FC = () => {
   const router = useRouter();
@@ -18,8 +19,10 @@ const TemplatesGallery: FC = () => {
     setIsCreating(true);
     create({ title, initialContent })
       .then((documentId) => {
-        router.push(`${Rounters.Documents}/${documentId}`)
+        router.push(`${Rounters.Documents}/${documentId}`);
+        toast.success("Document created");
       })
+      .catch(() => { toast.error("Something went wrong") })
       .finally(() => {
         setIsCreating(false);
       })

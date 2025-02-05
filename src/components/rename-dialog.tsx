@@ -8,6 +8,7 @@ import { api } from "../../convex/_generated/api";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { toast } from "sonner";
 
 type DocumentTypes = Doc<"documents">
 
@@ -29,6 +30,8 @@ const RenameDialog: FC<RenameDialogProps> = (props) => {
     setIsUpdating(true);
 
     update({ id: documentId, title: title.trim() || "Untitled" })
+      .then(() => { toast.success("Document updated") })
+      .catch(() => { toast.error("Something went wrong") })
       .finally(() => {
         setIsUpdating(false);
         setOpen(false);

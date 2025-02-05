@@ -75,8 +75,8 @@ const Toolbar: FC = () => {
       {
         icon: MessageSquarePlusIcon,
         label: "Comment",
-        isActive: false,
-        onClick: () => console.log("TODO: Comment")
+        isActive: editor?.isActive("liveblocksCommentMark"),
+        onClick: () => editor?.chain().focus().addPendingComment().run()
       },
       {
         icon: ListTodoIcon,
